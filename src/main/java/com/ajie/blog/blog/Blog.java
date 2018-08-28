@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.ajie.blog.blog.simple.Label;
+import com.ajie.res.user.User;
 
 /**
  * 博文接口
@@ -25,6 +26,8 @@ public interface Blog {
 	 * @return
 	 */
 	int getId();
+	
+	void setId(int id);
 
 	/**
 	 * 外部id
@@ -73,7 +76,9 @@ public interface Blog {
 	 * 
 	 * @return
 	 */
-	String getUSer();// FIXME
+	User getUser();
+	
+	void setUser(User user);
 
 	/**
 	 * 标签集

@@ -1,8 +1,12 @@
 package com.ajie.blog.blog;
 
+import java.util.List;
+
 /**
  * @author niezhenjie
  */
-public class BlogService {
+public interface BlogService {
+
+	List<Blog> getBlogs();
 
 }

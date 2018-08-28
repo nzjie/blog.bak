@@ -12,30 +12,23 @@
 	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
 <!-- 这个过滤器一定不能配在spring-mvc的spring文件中  -->
-	<bean id="requestFilter" class="com.ajie.web.RequestFilter">
+	<!-- <bean id="requestFilter" class="com.ajie.web.RequestFilter">
 		<property name="navigatorService" ref="navigatorService" />
 		<property name="userService" ref="userService" />
 		<property name="ignoreUri">
 			<list>
 				<value>/res/index.do</value>
 				<value>/res/login.do</value>
-				<!-- <value>/res/blog/blog.do</value> -->
+				<value>/res/blog/blog.do</value>
 				<value>/res/nav.do</value>
 			</list>
 		</property>
 		<property name="encoding" value="utf-8" />
 		<property name="loginUrl" value="/res/login.do?ref=" />
 
-	</bean>
+	</bean> -->
 
-	<bean id="navigatorService" class="com.ajie.res.navigator.impl.NavigatorServiceImpl">
-		<property name="xmlFile" value="navigator.xml" />
-	</bean>
-
-	<bean id="userService" class="com.ajie.res.user.impl.UserServiceImpl">
-		<property name="navigatorService" ref="navigatorService" />
-		<property name="rolesData" value="role.xml" />
-		<property name="usersData" value="user.xml" />
+	<bean id="blogService" class="com.ajie.blog.blog.impl.BlogServiceImpl">
 	</bean>
 
 </beans>
