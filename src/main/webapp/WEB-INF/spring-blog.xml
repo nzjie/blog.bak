@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+<!-- 这个过滤器一定不能配在spring-mvc的spring文件中  -->
+	<bean id="requestFilter" class="com.ajie.web.RequestFilter">
+		<property name="navigatorService" ref="navigatorService" />
+		<property name="userService" ref="userService" />
+		<property name="ignoreUri">
+			<list>
+				<value>/res/index.do</value>
+				<value>/res/login.do</value>
+				<!-- <value>/res/blog/blog.do</value> -->
+				<value>/res/nav.do</value>
+			</list>
+		</property>
+		<property name="encoding" value="utf-8" />
+		<property name="loginUrl" value="/res/login.do?ref=" />
+
+	</bean>
+
+	<bean id="navigatorService" class="com.ajie.res.navigator.impl.NavigatorServiceImpl">
+		<property name="xmlFile" value="navigator.xml" />
+	</bean>
+
+	<bean id="userService" class="com.ajie.res.user.impl.UserServiceImpl">
+		<property name="navigatorService" ref="navigatorService" />
+		<property name="rolesData" value="role.xml" />
+		<property name="usersData" value="user.xml" />
+	</bean>
+
+</beans>
