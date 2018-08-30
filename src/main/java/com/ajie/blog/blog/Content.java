@@ -2,10 +2,12 @@ package com.ajie.blog.blog;
 
 import java.util.Date;
 
+import com.ajie.blog.persistent.AbstractOuterIdSupport;
+
 /**
  * @author niezhenjie
  */
-public class Content {
+public class Content extends AbstractOuterIdSupport{
 
 	/**
 	 * 创建时间
@@ -62,6 +64,16 @@ public class Content {
 
 	public void setState(int state) {
 		this.state = state;
+	}
+
+	@Override
+	public String getOuterId() {
+		return null;
+	}
+
+	@Override
+	protected String getRealId() {
+		return null;
 	}
 
 }
